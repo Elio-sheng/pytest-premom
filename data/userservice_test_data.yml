@@ -1,7 +1,7 @@
-test_userservice_login:
-  email: "test256@premom.com"
-  password: "123456"
-  deviceID: "decbb1ef-e41c-4cbd-9265-902415f00504"
-  except_result: True
-  except_code: 0
-  except_msg: "登录成功"
+TestLogin:
+  test_userservice_login:
+    parameters: email, password, deviceId
+    values:
+      - [test, test, test]
+      - [1, 1, 1]
+      - [1, 1, 1]

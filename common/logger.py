@@ -41,6 +41,6 @@ class Logger():
 
 logger = Logger().logger
 
-if __name__ == '__main__':
-    logger.info("---start test---")
-    logger.debug("---test end---")
+# if __name__ == '__main__':
+#     logger.info("---start test---")
+#     logger.debug("---test end---")

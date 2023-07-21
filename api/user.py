@@ -28,7 +28,7 @@ class UserService(RestClient):
         Returns:
             The response from the API.
         """
-        return self.post("/user/web/sign/in", **kwargs)
+        return self.post("/user/user/web/sign/in", **kwargs)
 
     def thirdUserLogin(self, **kwargs):
         """

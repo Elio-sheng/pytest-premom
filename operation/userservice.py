@@ -21,8 +21,8 @@ def webUserLogin(email, password, deviceId):
         "Content-Type": "application/json"
     }
     res = userservice.webUserLogin(json=json_data, headers=header)
-    result.success = False
     logger.info(res.json())
+    result.success = False
     if res.json()["code"] == 200:
         result.success = True
     else:
