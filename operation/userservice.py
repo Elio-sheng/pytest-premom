@@ -3,31 +3,52 @@ from api.user import userservice
 from common.logger import logger
 
 
-def webUserLogin(email, password, deviceId):
+def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone):
     """
-    注册用户信息
-    :param email: 注册邮箱
-    :param password: 密码
-    :param deviceId: 设备 ID
-    :return: 自定义的关键字返回结果 result
+    Register user information.
+
+    Args:
+        anonymousId (str): Anonymous ID.
+        bindAnonymous (bool): Flag indicating if the user should be bound to the anonymous ID.
+        email (str): User's email address.
+        password (str): User's password.
+        phoneID (str): User's phone ID.
+        platform (str): User's platform.
+        timeZone (str): User's time zone.
+
+    Returns:
+        ResultBase: Custom keyword result.
+
     """
     result = ResultBase()
+
     json_data = {
-        "username": email,
+        "anonymousId": anonymousId,
+        "bindAnonymous": bindAnonymous,
+        "email": email,
         "password": password,
-        "deviceId": deviceId,
+        "phoneID": phoneID,
+        "platform": platform,
+        "timeZone": timeZone,
     }
+
     header = {
         "Content-Type": "application/json"
     }
+
     res = userservice.webUserLogin(json=json_data, headers=header)
+
     logger.info(res.json())
+
     result.success = False
-    if res.json()["code"] == 200:
+    logger.info(res.json()["code"])
+    if res.json()["code"] == "SIGN_INVALID_REGISTER_PASSWORD":
         result.success = True
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(
             res.json()["code"], res.json())
+
     result.msg = res.json()["message"]
     result.response = res
+
     return result

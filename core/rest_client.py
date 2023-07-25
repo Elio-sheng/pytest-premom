@@ -63,7 +63,6 @@ class RestClient():
             # Send a PATCH request using the session object
             return self.session.patch(url, data, **kwargs)
 
-    @classmethod
     def request_log(self, url, method, data=None, json=None, params=None, headers=None, files=None, cookies=None, **kwargs):
         # Log the API request URL
         logger.info("接口请求地址 ==>> {}".format(url))
