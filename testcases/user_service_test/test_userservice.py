@@ -1,4 +1,3 @@
-import pytest
 from operation.userservice import webUserLogin
 from common.logger import logger
 
@@ -18,3 +17,4 @@ class TestLogin():
 
         # Print a message to indicate the end of the test case
         logger.info("*************** 结束执行用例 ***************")
+

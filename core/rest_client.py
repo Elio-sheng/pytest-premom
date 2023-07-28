@@ -5,9 +5,9 @@ from common.logger import logger
 
 class RestClient():
 
-    def __init__(self, api_root_url):
+    def __init__(self, base_url):
         # Initialize the RestClient object with the API root URL
-        self.api_root_url = api_root_url
+        self.base_url = base_url
         # Create a session object to handle HTTP requests
         self.session = requests.session()
 
@@ -33,7 +33,7 @@ class RestClient():
 
     def request(self, url, method, data=None, json=None, **kwargs):
         # Construct the complete URL by appending the URL to the API root URL
-        url = self.api_root_url + url
+        url = self.base_url + url
         # Extract the headers, params, files, and cookies from the kwargs
         headers = dict(**kwargs).get("headers")
         params = dict(**kwargs).get("params")
