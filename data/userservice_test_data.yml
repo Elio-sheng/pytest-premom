@@ -18,7 +18,7 @@ TestLogin: # TestLogin is the name of the test suite
       - [
           "1",
           true,
-          "xx@qq.com",
+          "1111@qq.com",
           "123456",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iPhone XR 13.3",
