@@ -1,7 +1,7 @@
 from core.result_base import ResultBase
 from api.user import UserService
 from common.logger import logger
-
+import os
 
 
 def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone):
@@ -36,8 +36,9 @@ def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform,
     header = {
         "Content-Type": "application/json"
     }
-
-    res = userservice.webUserLogin(json=json_data, headers=header)
+    api_url = os.environ["API_URL"]
+    webUser = UserService(base_url=api_url)
+    res = webUser.webUserLogin(json=json_data, headers=header)
 
     logger.info(res.json())
 

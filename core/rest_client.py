@@ -1,16 +1,16 @@
 import requests
 import json as complexjson
 from common.logger import logger
+import os
 
 
 class RestClient():
-
-    def __init__(self, base_url):
+    def __init__(self, base_url, **kwargs):
         # Initialize the RestClient object with the API root URL
-        self.base_url = base_url
         # Create a session object to handle HTTP requests
         self.session = requests.session()
-
+        self.base_url = base_url
+        
     def get(self, url, **kwargs):
         # Send a GET request to the specified URL
         return self.request(url, "GET", **kwargs)
