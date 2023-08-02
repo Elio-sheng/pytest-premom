@@ -117,8 +117,7 @@ def pytest_generate_tests(metafunc):
         logger.info(f"Parameters: {parameters}")
         logger.info(f"Values: {values}")
         metafunc.parametrize(parameters, values)
-```
-```
+“““
 这段代码是一个 Pytest 的钩子函数，名为 `pytest_generate_tests`。这个函数在每个测试函数被收集并准备运行时被调用，用于为测试函数生成参数。
 
 - `metafunc` 参数是一个 `Metafunc` 对象，它包含了关于当前测试函数的信息，如函数名、类名、可用的 fixture 等。
@@ -138,7 +137,9 @@ def pytest_generate_tests(metafunc):
 - `metafunc.parametrize(parameters, values)` 是一个函数调用，用于为测试函数生成参数。这个函数会为每个元素在 `values` 列表中生成一个测试用例，参数名由 `parameters` 字符串指定。
 
 这段代码的主要作用是从 YAML 文件中读取测试数据，并为测试函数生成参数。这样，你可以在 YAML 文件中为每个测试函数定义多个测试用例，每个测试用例都有自己的参数值。
+”””
 ```
+
 
 #### yaml文件格式如下
 ```
