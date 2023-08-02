@@ -26,7 +26,7 @@
 ### pytest.ini 解析
 
 - pytest.ini
-  > pytest 框架的配置文件
+> pytest 框架的配置文件
 
 ```
 [pytest]   # 这是配置文件的节标题，表示这个节包含了 Pytest 的配置选项。
