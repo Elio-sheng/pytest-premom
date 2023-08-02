@@ -87,10 +87,60 @@ markers =
 
 2. 在 testcases 目录下创建一个新的 Python 文件，这个文件将包含新的测试用例。
 
-3. 在这个文件中，使用 pytest.mark.parametrize 装饰器来定义新的测试用例。这个装饰器将会读取你在 YAML 文件中定义的测试数据，并将它们作为参数传递给测试用例。
 
-#### data.yaml 格式
+#### pytest自动生成测试用例
+> conftest.py里面的pytest_generate_tests函数来生成测试用例
+```
+def pytest_generate_tests(metafunc):
+    """Parameterize the tests from a YAML file.
 
+    The YAML file structure should be like this:
+        TestXXX:                        # Class
+          test_soco_xxx:                # Function
+            parameters: paramA, paramB  # Parameter list
+            values:
+              - [valA1, valA2]          # Test cases
+              - [valA2, valB2]
+    """
+    global userTestdata
+    if not userTestdata:
+        # Fetch testdata from YAML file
+        userTestdata = get_data("userservice_test_data.yml")
+
+    classname = metafunc.cls.__name__
+    funcname = metafunc.function.__name__
+    funcdata = userTestdata.get(classname)[funcname]
+    if funcdata:
+        parameters = funcdata['parameters']
+        # Convert argument lists to tuples
+        values = [tuple(v) if isinstance(v, list) else v for v in funcdata['values']]
+        logger.info(f"Parameters: {parameters}")
+        logger.info(f"Values: {values}")
+        metafunc.parametrize(parameters, values)
+```
+```
+这段代码是一个 Pytest 的钩子函数，名为 `pytest_generate_tests`。这个函数在每个测试函数被收集并准备运行时被调用，用于为测试函数生成参数。
+
+- `metafunc` 参数是一个 `Metafunc` 对象，它包含了关于当前测试函数的信息，如函数名、类名、可用的 fixture 等。
+
+- `userTestdata` 是一个全局变量，用于存储从 YAML 文件中读取的测试数据。
+
+- `get_data("userservice_test_data.yml")` 是一个函数调用，用于从指定的 YAML 文件中读取测试数据。
+
+- `classname` 和 `funcname` 分别是当前测试函数的类名和函数名。
+
+- `funcdata` 是从 YAML 文件中读取的针对当前测试函数的测试数据。
+
+- `parameters` 是一个字符串，包含了测试函数的参数名。
+
+- `values` 是一个列表，包含了测试函数的参数值。每个元素是一个元组，对应于一个测试用例。
+
+- `metafunc.parametrize(parameters, values)` 是一个函数调用，用于为测试函数生成参数。这个函数会为每个元素在 `values` 列表中生成一个测试用例，参数名由 `parameters` 字符串指定。
+
+这段代码的主要作用是从 YAML 文件中读取测试数据，并为测试函数生成参数。这样，你可以在 YAML 文件中为每个测试函数定义多个测试用例，每个测试用例都有自己的参数值。
+```
+
+#### yaml文件格式如下
 ```
     The YAML file structure should be like this:
         TestXXX:                        # Class
