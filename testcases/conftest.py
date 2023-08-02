@@ -2,6 +2,8 @@ import pytest
 import os
 from common.logger import logger
 from common.read_data import yaml
+from api.user import userservice
+
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 userTestdata = None
 
@@ -50,3 +52,21 @@ def pytest_generate_tests(metafunc):
         logger.info(f"Parameters: {parameters}")
         logger.info(f"Values: {values}")
         metafunc.parametrize(parameters, values)
+        
+
+@pytest.fixture(scope="session", autouse=True)        
+def GetToken():
+    json_data = {
+      "anonymousId": "",
+      "bindAnonymous": "true",
+      "email": "test103@premom.com",
+      "password": "123456",
+      "phoneID": "decbb1ef-e41c-4cbd-9265-902415f00504",
+      "platform": "iPhone XR 13.3",
+      "timeZone": "+0800"
+    }
+    header = {
+        "Content-Type": "application/json"
+    }
+    res = userservice.webUserLogin(json=json_data, headers=header)
+    logger.info(res)
