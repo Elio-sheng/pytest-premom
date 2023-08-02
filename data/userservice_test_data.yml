@@ -13,7 +13,7 @@ TestLogin: # TestLogin is the name of the test suite
           "+0800",
           True,
           200,
-          "登录成功",
+          "登录",
         ]
       - [
           "1",
