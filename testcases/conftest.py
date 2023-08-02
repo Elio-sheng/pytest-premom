@@ -74,23 +74,24 @@ def testurl(request):
     os.environ["API_URL"] = env_mapping.get(env)
 
 
-@pytest.fixture(scope="class", autouse=True)        
-def GetToken():
-    json_data = {
-      "anonymousId": "",
-      "bindAnonymous": "true",
-      "email": "test103@premom.com",
-      "password": "123456",
-      "phoneID": "decbb1ef-e41c-4cbd-9265-902415f00504",
-      "platform": "iPhone XR 13.3",
-      "timeZone": "+0800"
-    }
-    header = {
-        "Content-Type": "application/json"
-    }
-    base_url = os.environ["API_URL"]
-    logger.info(base_url)
-    userservice = UserService(base_url=base_url)
-    # logger.info()
-    res = userservice.webUserLogin(json=json_data, headers=header)
-    logger.info(res.headers["authToken"])
+# @pytest.fixture(scope="class", autouse=True)
+# def GetToken():
+#     json_data = {
+#       "anonymousId": "",
+#       "bindAnonymous": "true",
+#       "email": "test103@premom.com",
+#       "password": "123456",
+#       "phoneID": "decbb1ef-e41c-4cbd-9265-902415f00504",
+#       "platform": "iPhone XR 13.3",
+#       "timeZone": "+0800"
+#     }
+#     header = {
+#         "Content-Type": "application/json"
+#     }
+#     base_url = os.environ["API_URL"]
+#     logger.info(base_url)
+#     userservice = UserService(base_url=base_url)
+#     # logger.info()
+#     res = userservice.webUserLogin(json=json_data, headers=header)
+#     logger.info(res.headers["authToken"])
+#     logger.info(res.json())

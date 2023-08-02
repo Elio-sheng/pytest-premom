@@ -7,10 +7,10 @@ class TestLogin():
         # Print a message to indicate the start of the test case
         logger.info("*************** 开始执行用例 ***************")
         # Call the webUserLogin function with the provided parameters
-        # result = webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone)
+        result = webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone)
 
         # Log the expected result, code, and message
 
-        # logger.info(result)
+        logger.info(result)
         # Print a message to indicate the end of the test case
         logger.info("*************** 结束执行用例 ***************")

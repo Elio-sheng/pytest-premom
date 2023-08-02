@@ -43,14 +43,14 @@ def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform,
     logger.info(res.json())
 
     result.success = False
-    logger.info(res.json()["code"])
-    if res.json()["code"] == "SIGN_INVALID_REGISTER_PASSWORD":
+    logger.info(res.json()["init"])
+    if res.json()["init"] == True:
         result.success = True
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(
             res.json()["code"], res.json())
 
-    result.msg = res.json()["message"]
+    # result.msg = res.json()
     result.response = res
 
     return result
