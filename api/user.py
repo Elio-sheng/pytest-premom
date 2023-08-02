@@ -1,4 +1,3 @@
-import os
 from core.rest_client import RestClient
 
 
@@ -15,7 +14,3 @@ class UserService(RestClient):
 
     def webRegister(self, **kwargs):
         return self.post("/user/web/sign/up", **kwargs)
-
-
-base_url = os.environ["API_URL"]
-userservice = UserService(base_url)

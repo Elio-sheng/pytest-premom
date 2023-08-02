@@ -2,7 +2,7 @@ import pytest
 import os
 from common.logger import logger
 from common.read_data import yaml
-from api.user import userservice
+from api.user import UserService
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 userTestdata = None
@@ -53,8 +53,28 @@ def pytest_generate_tests(metafunc):
         logger.info(f"Values: {values}")
         metafunc.parametrize(parameters, values)
         
+        
+def pytest_addoption(parser):
+    """Add option to pass --testenv=test to pytest cli command"""
+    parser.addoption(
+        "--testenv", action="store", default="dev", choices=["mtest", "prod", "test"], help="env：表示测试环境，默认dev环境"
+    )
 
-@pytest.fixture(scope="session", autouse=True)        
+
+@pytest.fixture(scope="module", autouse=True)
+def testurl(request):
+    env_mapping = {
+        'test': 'http://api.test.premom.tech/',
+        'mtest': 'http://api.mtest.premom.tech/',
+        'prod': 'http://api.premom.tech/'
+    }
+    env = request.config.getoption("--testenv")
+    logger.info(env)
+    logger.info(env_mapping.get(env))
+    os.environ["API_URL"] = env_mapping.get(env)
+
+
+@pytest.fixture(scope="class", autouse=True)        
 def GetToken():
     json_data = {
       "anonymousId": "",
@@ -68,5 +88,9 @@ def GetToken():
     header = {
         "Content-Type": "application/json"
     }
+    base_url = os.environ["API_URL"]
+    logger.info(base_url)
+    userservice = UserService(base_url=base_url)
+    # logger.info()
     res = userservice.webUserLogin(json=json_data, headers=header)
-    logger.info(res)
+    logger.info(res.headers["authToken"])

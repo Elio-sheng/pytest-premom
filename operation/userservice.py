@@ -1,6 +1,7 @@
 from core.result_base import ResultBase
-from api.user import userservice
+from api.user import UserService
 from common.logger import logger
+
 
 
 def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone):
