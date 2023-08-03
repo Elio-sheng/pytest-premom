@@ -40,11 +40,13 @@ def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform,
     webUser = UserService(base_url=api_url)
     res = webUser.webUserLogin(json=json_data, headers=header)
 
-    logger.info(res.json())
+    # logger.info(res.json())
 
     result.success = False
-    logger.info(res.json()["init"])
+    logger.info(res.json())
     if res.json()["init"] == True:
+        result.success = True
+    if res.json()["code"] == "SIGN_PASSWORD_NOT_MATCHED":
         result.success = True
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(

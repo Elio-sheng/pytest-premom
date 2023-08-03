@@ -4,7 +4,7 @@ TestLogin: # TestLogin is the name of the test suite
       anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone, except_result, expect_code, expect_msg
     values: # values to be used for each parameter in the test case
 #      - [
-#          "1",
+#          "",
 #          true,
 #          "testq40@premom.com",
 #          "123456",
@@ -20,6 +20,18 @@ TestLogin: # TestLogin is the name of the test suite
           true,
           "testq40@premom.com",
           "123456",
+          "decbb1ef-e41c-4cbd-9265-902415f00504",
+          "iSM-S908N_33",
+          "+0800",
+          True,
+          200,
+          "登录成功",
+        ]
+      - [
+          "",
+          true,
+          "testq40@premom.com",
+          "12345",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iSM-S908N_33",
           "+0800",
