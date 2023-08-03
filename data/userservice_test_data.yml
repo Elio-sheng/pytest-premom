@@ -79,6 +79,77 @@ TestLogin: # TestLogin is the name of the test suite
           "+0800",
           True,
           200,
-          "登录成功",
+          "登录成功11",
         ]
 
+TestSign: # TestSign is the name of the test suite
+  test_userservice_sign: # test_userservice_sign is the name of the test case
+    parameters: # parameters that the test case accepts
+        title, email, password, OSType, lastName, firstName, except_result, expect_code, expect_msg
+    values:
+      - [
+          "ios-注册成功",
+          "testw13@premom.com",
+          "123456",
+          "iPhone 13  Pro 15.3.1",
+          "Snd",
+          "Yeue",
+          True,
+          200,
+          "",
+        ]
+      - [
+          "重复注册",
+          "testw13@premom.com",
+          "123456",
+          "iPhone 13  Pro 15.3.1",
+          "Snd",
+          "Yeue",
+          True,
+          "SIGN_DUPLICATED_EMAIL",
+          "This email has already been registered.",
+        ]
+      - [
+          "邮箱为空",
+          "",
+          "123456",
+          "iPhone 13  Pro 15.3.1",
+          "Snd",
+          "Yeue",
+          True,
+          "SIGN_INVALID_REGISTER_ACCOUNT",
+          "Invalid account.",
+        ]
+      - [
+          "密码为空",
+          "testw14@premom.com",
+          "",
+          "iPhone 13  Pro 15.3.1",
+          "Snd",
+          "Yeue",
+          True,
+          "SIGN_INVALID_REGISTER_PASSWORD",
+          "nvalid password.",
+        ]
+
+TestDelete: # TestDelete is the name of the test suite
+  test_userservice_delete: # test_userservice_delete is the name of the test case
+    parameters: # parameters that the test case accepts
+        title, reasonType, appsflyerId, except_result, expect_code, expect_msg
+    values:
+      - [
+        "iOS-删除成功",
+        "OTHERS",
+        "",
+        True,
+        200,
+        "删除"
+        ]
+      - [
+        "删除失败",
+        "",
+        "",
+        True,
+        "TOKEN_ERR_FORCE_LOGOUT",
+        "Your account has been deleted. Please feel free to register again if necessary."
+        ]
