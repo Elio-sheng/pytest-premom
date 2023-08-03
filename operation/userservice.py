@@ -21,7 +21,7 @@ def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform,
         ResultBase: Custom keyword result.
 
     """
-    result = ResultBase()
+    result = ResultBase
 
     json_data = {
         "anonymousId": anonymousId,
@@ -46,8 +46,8 @@ def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform,
     logger.info(res.json())
     if res.json()["init"] == True:
         result.success = True
-    if res.json()["code"] == "SIGN_PASSWORD_NOT_MATCHED":
-        result.success = True
+    # if res.json()["code"] == "SIGN_PASSWORD_NOT_MATCHED":
+    #     result.success = True
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(
             res.json()["code"], res.json())

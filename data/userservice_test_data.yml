@@ -1,21 +1,23 @@
 TestLogin: # TestLogin is the name of the test suite
   test_userservice_login: # test_userservice_login is the name of the test case
     parameters: # parameters that the test case accepts
-      anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone, except_result, expect_code, expect_msg
+      title, anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone, except_result, expect_code, expect_msg
     values: # values to be used for each parameter in the test case
-#      - [
-#          "",
-#          true,
-#          "testq40@premom.com",
-#          "123456",
-#          "decbb1ef-e41c-4cbd-9265-902415f00504",
-#          "iPhone XR 13.3",
-#          "+0800",
-#          True,
-#          200,
-#          "登录",
-#        ]
       - [
+          "ios-登录成功",
+          "",
+          true,
+          "testq40@premom.com",
+          "123456",
+          "decbb1ef-e41c-4cbd-9265-902415f00504",
+          "iPhone XR 13.3",
+          "+0800",
+          True,
+          200,
+          "登录",
+        ]
+      - [
+          "Android-登录成功",
           "",
           true,
           "testq40@premom.com",
@@ -28,6 +30,7 @@ TestLogin: # TestLogin is the name of the test suite
           "登录成功",
         ]
       - [
+          "密码错误",
           "",
           true,
           "testq40@premom.com",
@@ -39,3 +42,43 @@ TestLogin: # TestLogin is the name of the test suite
           200,
           "登录成功",
         ]
+      - [
+          "Email错误",
+          "",
+          true,
+          "1testq40@premom.com",
+          "123456",
+          "decbb1ef-e41c-4cbd-9265-902415f00504",
+          "iSM-S908N_33",
+          "+0800",
+          True,
+          200,
+          "登录成功",
+        ]
+      - [
+          "密码为空",
+          "",
+          true,
+          "testq40@premom.com",
+          "",
+          "decbb1ef-e41c-4cbd-9265-902415f00504",
+          "iSM-S908N_33",
+          "+0800",
+          True,
+          200,
+          "登录成功",
+        ]
+      - [
+          "Email为空",
+          "",
+          true,
+          "",
+          "123456",
+          "decbb1ef-e41c-4cbd-9265-902415f00504",
+          "iSM-S908N_33",
+          "+0800",
+          True,
+          200,
+          "登录成功",
+        ]
+
