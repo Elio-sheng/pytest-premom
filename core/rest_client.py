@@ -1,7 +1,6 @@
 import requests
 import json as complexjson
 from common.logger import logger
-import os
 
 
 class RestClient():
@@ -10,7 +9,7 @@ class RestClient():
         # Create a session object to handle HTTP requests
         self.session = requests.session()
         self.base_url = base_url
-        
+    
     def get(self, url, **kwargs):
         # Send a GET request to the specified URL
         return self.request(url, "GET", **kwargs)
@@ -32,6 +31,7 @@ class RestClient():
         return self.request(url, "PATCH", data, **kwargs)
 
     def request(self, url, method, data=None, json=None, **kwargs):
+        logger.info(self.base_url)
         # Construct the complete URL by appending the URL to the API root URL
         url = self.base_url + url
         # Extract the headers, params, files, and cookies from the kwargs
