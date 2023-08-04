@@ -11,3 +11,5 @@ class UserService(RestClient):
     def webRegister(self, **kwargs):
         return self.request("/user/web/sign/up", method="POST", **kwargs)
 
+    def userDelete(self,**kwargs):
+        return self.request("/user/user/cancellation/account/delete/reason", method="POST", **kwargs)

@@ -82,8 +82,8 @@ TestLogin: # TestLogin is the name of the test suite
           "登录成功11",
         ]
 
-TestSign: # TestSign is the name of the test suite
-  test_userservice_sign: # test_userservice_sign is the name of the test case
+TestRegister: # TestRegister is the name of the test suite
+  test_userservice_Register: # test_userservice_Register is the name of the test case
     parameters: # parameters that the test case accepts
         title, email, password, OSType, lastName, firstName, except_result, expect_code, expect_msg
     values:
