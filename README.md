@@ -26,7 +26,7 @@
 ### pytest.ini 解析
 
 - pytest.ini
-> pytest 框架的配置文件
+  > pytest 框架的配置文件
 
 ```
 [pytest]   # 这是配置文件的节标题，表示这个节包含了 Pytest 的配置选项。
@@ -64,7 +64,7 @@ markers =
 1. 在项目根目录下运行以下命令来运行所有的测试用例：
 
    ```bash
-   python run.py --testenv=mtest
+   python run.py --env=mtest
    ```
 
 2. 如果你只想运行某一类测试用例，你可以使用 `-m` 选项来选择要运行的测试用例。例如，以下命令将会运行所有标记为 `single` 的测试用例：
@@ -87,9 +87,10 @@ markers =
 
 2. 在 testcases 目录下创建一个新的 Python 文件，这个文件将包含新的测试用例。
 
+#### pytest 自动生成测试用例
 
-#### pytest自动生成测试用例
-> conftest.py里面的pytest_generate_tests函数来生成测试用例
+> conftest.py 里面的 pytest_generate_tests 函数来生成测试用例
+
 ```
 def pytest_generate_tests(metafunc):
     """Parameterize the tests from a YAML file.
@@ -140,8 +141,8 @@ def pytest_generate_tests(metafunc):
 ”””
 ```
 
+#### yaml 文件格式如下
 
-#### yaml文件格式如下
 ```
     The YAML file structure should be like this:
         TestXXX:                        # Class

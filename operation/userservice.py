@@ -4,7 +4,7 @@ from common.logger import logger
 import os
 
 
-def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone):
+def webUserLogin(title, anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone, except_result, expect_code,expect_msg):
     """
     Register user information.
 
@@ -31,16 +31,16 @@ def webUserLogin(anonymousId, bindAnonymous, email, password, phoneID, platform,
         "phoneID": phoneID,
         "platform": platform,
         "timeZone": timeZone,
+        
     }
 
     header = {
         "Content-Type": "application/json"
     }
-    api_url = os.environ["API_URL"]
-    webUser = UserService(base_url=api_url)
+    webUser = UserService(base_url=os.environ.get("API_URL"))
     res = webUser.webUserLogin(json=json_data, headers=header)
 
-    # logger.info(res.json())
+    logger.info(res.json())
 
     result.success = False
     logger.info(res.json())
