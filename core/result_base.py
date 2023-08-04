@@ -1,3 +1,5 @@
+from common.logger import logger
+
 
 class ResultBase:
     def __init__(self, res, status_code, contains, equals, key):
@@ -19,19 +21,19 @@ class ResultBase:
         self.assert_result_equal()
 
     def assert_request_code(self):
-        print("测试响应状态码是否正确")
+        logger.info("测试响应状态码是否正确")
         assert self.status_code == self.res.status_code
 
     def assert_result_contain(self):
-        print("测试是否包含xxx")
-        print(self.res.text)
+        logger.info("测试是否包含xxx")
+        logger.info(self.res.text)
         assert self.contains in self.res.text, self.contains+"不存在"
 
     def assert_result_equal(self):
         try:
-            print("测试键值是否相等")
+            logger.info("测试键值是否相等")
             assert self.equals == self.res.json()[self.key], self.equals+"不是预期值"
         except:
-            print("不是响应的json文本或key值不存在")
+            logger.info("不是响应的json文本或key值不存在")
 
 
