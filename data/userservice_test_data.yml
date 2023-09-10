@@ -7,66 +7,66 @@ TestLogin: # TestLogin is the name of the test suite
           "ios-登录成功",
           "",
           true,
-          "testq40@premom.com",
+          "test200@premom.com",
           "123456",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iPhone XR 13.3",
           "+0800",
           True,
           200,
-          "登录",
+          '{"init":true,"newUser":false,"gotoWelcomeKit":false,"gotoMembershipPromotion":false}'
         ]
       - [
           "Android-登录成功",
           "",
           true,
-          "testq40@premom.com",
+          "test201@premom.com",
           "123456",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iSM-S908N_33",
           "+0800",
           True,
           200,
-          "登录成功",
+          '{"init":true,"newUser":false,"gotoWelcomeKit":false,"gotoMembershipPromotion":false}'
         ]
       - [
           "密码错误",
           "",
           true,
-          "testq40@premom.com",
+          "test202@premom.com",
           "12345",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iSM-S908N_33",
           "+0800",
           True,
-          200,
-          "登录成功",
+          510,
+          '{"code":"SIGN_PASSWORD_NOT_MATCHED","message":"Please enter the correct email or password.","hideMsg":false,"noLog":true}'
         ]
       - [
           "Email错误",
           "",
           true,
-          "1testq40@premom.com",
+          "1test203@premom.com",
           "123456",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iSM-S908N_33",
           "+0800",
           True,
-          200,
-          "登录成功",
+          510,
+          '{"code":"SIGN_USER_NOT_EXIST","message":"Please enter the correct email or password.","hideMsg":false,"noLog":true}'
         ]
       - [
           "密码为空",
           "",
           true,
-          "testq40@premom.com",
+          "test204@premom.com",
           "",
           "decbb1ef-e41c-4cbd-9265-902415f00504",
           "iSM-S908N_33",
           "+0800",
           True,
-          200,
-          "登录成功",
+          510,
+          '{"code":"SIGN_INVALID_REGISTER_PASSWORD","message":"Invalid password.","hideMsg":false,"noLog":true}'
         ]
       - [
           "Email为空",
@@ -78,8 +78,8 @@ TestLogin: # TestLogin is the name of the test suite
           "iSM-S908N_33",
           "+0800",
           True,
-          200,
-          "登录成功11",
+          510,
+          '{"code":"SIGN_INVALID_REGISTER_ACCOUNT","message":"Invalid account.","hideMsg":false,"noLog":true}'
         ]
 
 TestRegister: # TestRegister is the name of the test suite
@@ -117,7 +117,7 @@ TestRegister: # TestRegister is the name of the test suite
           "Snd",
           "Yeue",
           True,
-          "SIGN_INVALID_REGISTER_ACCOUNT",
+          "510",
           "Invalid account.",
         ]
       - [
@@ -128,7 +128,7 @@ TestRegister: # TestRegister is the name of the test suite
           "Snd",
           "Yeue",
           True,
-          "SIGN_INVALID_REGISTER_PASSWORD",
+          "510",
           "nvalid password.",
         ]
 

@@ -68,8 +68,11 @@ def pytest_addoption(parser):
     #  这段代码定义了一个函数pytest_addoption，它接受一个类型为argparse.ArgumentParser的参数parser。在函数内部，使用addini方法向parser对象添加了三个选项（test_url，prod_url，mtest_url）。每个选项都有一个描述和一个默认值。
     """
     parser.addini("test_url", "url for the test environment", default="http://api.test.premom.tech")
-    parser.addini("prod_url", "url for the prod environment", default="http://prod.example.com")
+    parser.addini("prod_url", "url for the prod environment", default="https://api.premom.com")
     parser.addini("mtest_url", "url for the mtest environment", default="http://api.mtest.premom.tech")
+
+    parser.addoption("--env", action="store",default="test", help="Specify the enviroment to run the test")
+
 
 
 @pytest.fixture(scope='session', autouse=True)
