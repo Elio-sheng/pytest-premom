@@ -74,13 +74,19 @@ def pytest_addoption(parser):
     parser.addoption("--env", action="store",default="test", help="Specify the enviroment to run the test")
 
 
+    # parser.addoption("--env", action="store", default="test", help="Specify the environment to run the tests")
+
+# @pytest.fixture(scope="session")
+# def base_url(request):
+#     env = request.config.getoption("--env")
+#     return request.config.getini(env)
 
 @pytest.fixture(scope='session', autouse=True)
 def switch_env(request):
     """
-    这是一个名为switch_env的Pytest夹具，它在整个测试会话中自动使用。 
+    这是一个名为switch_env的Pytest夹具，它在整个测试会话中自动使用。
     它获取--env命令行选项的值，并将其赋值给env变量。 然后，它从pytest.ini文件中获取配置选项{env}_url的值，
-    并将其赋值给global_url变量。 如果在pytest.ini中找不到--env的值，它将回退到默认环境'test'。 
+    并将其赋值给global_url变量。 如果在pytest.ini中找不到--env的值，它将回退到默认环境'test'。
     它记录一条信息消息，指示用于测试的环境env和global_url URL。 最后，它返回global_url的值。
     参数：
 

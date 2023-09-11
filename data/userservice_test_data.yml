@@ -4,7 +4,7 @@ TestLogin: # TestLogin is the name of the test suite
       title, anonymousId, bindAnonymous, email, password, phoneID, platform, timeZone, except_result, expect_code, expect_msg
     values: # values to be used for each parameter in the test case
       - [
-          "ios-ç™»å½•æˆåŠŸ",
+          "ios-µÇÂ¼³É¹¦",
           "",
           true,
           "test200@premom.com",
@@ -17,7 +17,7 @@ TestLogin: # TestLogin is the name of the test suite
           '{"init":true,"newUser":false,"gotoWelcomeKit":false,"gotoMembershipPromotion":false}'
         ]
       - [
-          "Android-ç™»å½•æˆåŠŸ",
+          "Android-µÇÂ¼³É¹¦",
           "",
           true,
           "test201@premom.com",
@@ -30,7 +30,7 @@ TestLogin: # TestLogin is the name of the test suite
           '{"init":true,"newUser":false,"gotoWelcomeKit":false,"gotoMembershipPromotion":false}'
         ]
       - [
-          "å¯†ç é”™è¯¯",
+          "ÃÜÂë´íÎó",
           "",
           true,
           "test202@premom.com",
@@ -43,7 +43,7 @@ TestLogin: # TestLogin is the name of the test suite
           '{"code":"SIGN_PASSWORD_NOT_MATCHED","message":"Please enter the correct email or password.","hideMsg":false,"noLog":true}'
         ]
       - [
-          "Emailé”™è¯¯",
+          "Email´íÎó",
           "",
           true,
           "1test203@premom.com",
@@ -56,7 +56,7 @@ TestLogin: # TestLogin is the name of the test suite
           '{"code":"SIGN_USER_NOT_EXIST","message":"Please enter the correct email or password.","hideMsg":false,"noLog":true}'
         ]
       - [
-          "å¯†ç ä¸ºç©º",
+          "ÃÜÂëÎª¿Õ",
           "",
           true,
           "test204@premom.com",
@@ -69,7 +69,7 @@ TestLogin: # TestLogin is the name of the test suite
           '{"code":"SIGN_INVALID_REGISTER_PASSWORD","message":"Invalid password.","hideMsg":false,"noLog":true}'
         ]
       - [
-          "Emailä¸ºç©º",
+          "EmailÎª¿Õ",
           "",
           true,
           "",
@@ -83,13 +83,13 @@ TestLogin: # TestLogin is the name of the test suite
         ]
 
 TestRegister: # TestRegister is the name of the test suite
-  test_userservice_Register: # test_userservice_Register is the name of the test case
+  test_userservice_register: # test_userservice_register is the name of the test case
     parameters: # parameters that the test case accepts
-        title, email, password, OSType, lastName, firstName, except_result, expect_code, expect_msg
+      title, email, password, OSType, lastName, firstName, except_result, expect_code, expect_msg
     values:
       - [
-          "ios-æ³¨å†ŒæˆåŠŸ",
-          "testw13@premom.com",
+          "ios-×¢²á³É¹¦",
+          "test501@premom.com",
           "123456",
           "iPhone 13  Pro 15.3.1",
           "Snd",
@@ -99,37 +99,37 @@ TestRegister: # TestRegister is the name of the test suite
           "",
         ]
       - [
-          "é‡å¤æ³¨å†Œ",
-          "testw13@premom.com",
+          "ÖØ¸´×¢²á",
+          "test500@premom.com",
           "123456",
           "iPhone 13  Pro 15.3.1",
           "Snd",
           "Yeue",
           True,
-          "SIGN_DUPLICATED_EMAIL",
-          "This email has already been registered.",
+          510,
+          "This email has already been registered."
         ]
       - [
-          "é‚®ç®±ä¸ºç©º",
+          "ÓÊÏäÎª¿Õ",
           "",
           "123456",
           "iPhone 13  Pro 15.3.1",
           "Snd",
           "Yeue",
           True,
-          "510",
-          "Invalid account.",
+          510,
+          "Invalid account."
         ]
       - [
-          "å¯†ç ä¸ºç©º",
-          "testw14@premom.com",
+          "ÃÜÂëÎª¿Õ",
+          "test501@premom.com",
           "",
           "iPhone 13  Pro 15.3.1",
           "Snd",
           "Yeue",
           True,
-          "510",
-          "nvalid password.",
+          510,
+          "nvalid password."
         ]
 
 TestDelete: # TestDelete is the name of the test suite
@@ -138,15 +138,15 @@ TestDelete: # TestDelete is the name of the test suite
         title, reasonType, appsflyerId, except_result, expect_code, expect_msg
     values:
       - [
-        "iOS-åˆ é™¤æˆåŠŸ",
+        "iOS-É¾³ı³É¹¦",
         "OTHERS",
         "",
         True,
         200,
-        "åˆ é™¤"
+        "É¾³ı"
         ]
       - [
-        "åˆ é™¤å¤±è´¥",
+        "É¾³ıÊ§°Ü",
         "",
         "",
         True,
